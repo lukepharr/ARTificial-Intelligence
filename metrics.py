@@ -22,7 +22,7 @@ def mode_color(img):
 	return rgb
 
 def mean_color(img):
-	img=io.imread('Rothko_AI/1970_1.jpg')
+	img=io.imread('Rothko_AI/'+img)
 	flat_img=[]
 	for x in img:
 	    for y in x:
@@ -34,5 +34,5 @@ def mean_color(img):
 	return rgb
 
 def shannon_entropy(img):
-	entropy = skimage.measure.shannon_entropy(io.imread('Rothko_AI/1948_1.jpg'), base=2)
+	entropy = skimage.measure.shannon_entropy(io.imread('Rothko_AI/'+img), base=2)
 	return entropy
