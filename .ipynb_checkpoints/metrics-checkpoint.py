@@ -31,9 +31,9 @@ def mode_color(img):
 	key_max = max(counts.keys(), key=(lambda k: counts[k]))
 	key_max = key_max.split('[')[1].split(']')[0]
 	rgb = np.fromstring(key_max, dtype=int, sep=' ')
-	key_max = key_max.split('[')[1].split(']')[0]
-	rgb = np.fromstring(key_max, dtype=int, sep=' ')
-	rgb = [rgb[0],rgb[1],rgb[2]]
+	key_max=key_max.split('[')[1].split(']')[0]
+	rgb=np.fromstring(key_max, dtype=int, sep=' ')
+	rgb=[rgb[0],rgb[1],rgb[2]]
 
 	return rgb
 
@@ -78,13 +78,11 @@ def get_perimeter(img):
 	# return entropy
 
 data_ = {'file_name':[], 'mode_color':[], 'mean_color':[], 'shannon_entropy':[]}
-
 for filename in os.listdir('../Rothko_AI'):
     if '.jpg' in filename:
         data_['file_name'].append(filename)
         data_['mode_color'].append(mode_color(filename))
         data_['mean_color'].append(mean_color(filename))
         data_['shannon_entropy'].append(shannon_entropy(filename))
-        
-df = pd.DataFrame(data_)
+df=pd.DataFrame(data_)
 df.to_csv('../data/data.csv')
