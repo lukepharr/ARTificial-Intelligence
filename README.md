@@ -2,7 +2,7 @@
 ## Overview
 Mark Rothko's paintings change over time, and this project will utilize his his artwork to help a user determine the year painted for a painting. 
 
-![Rothko 1936 Painting](https://github.com/cammster/ARTificial-Intelligence/blob/master/Rothko_AI/1936_1.jpg)
+![Rothko 1936 Painting](https://github.com/cammster/ARTificial-Intelligence/blob/master/images/Rothko_guggenheim_org/1946_31.jpg)
 
 ## Team Members
 Luke Pharr
