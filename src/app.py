@@ -4,6 +4,7 @@
 import os
 from flask import Flask
 from flask import render_template, jsonify
+import pandas as pd
 
 from sklearn import tree
 import pickle
@@ -14,6 +15,7 @@ app = Flask(__name__)
 
 # The path to the Rothko Decision Tree model
 rothko_tree_model_file = "../Rothko/models/TREE/RothkoDecisionTree.pkl"
+rothko_linear_model_file = "../Rothko/models/linear_regression/RothkoLinearModel.pkl"
 
 #########################################################
 # Flask route for the root/index page
@@ -28,7 +30,7 @@ def home():
 #########################################################
 @app.route('/classify_rothko/<imagefile>')
 def classify_rothko(imagefile):
-    # load the rothko model from disk
+    # load the rothko decision tree model from disk
     decision_tree_model = pickle.load(open(rothko_tree_model_file, "rb"))
 
     # get the metrics for the image that we need for the input features for the model
@@ -38,8 +40,20 @@ def classify_rothko(imagefile):
     # use the model to predict the year bin
     predicted = decision_tree_model.predict(features)
 
+    # load the linear model from disk
+    linear_model = pickle.load(open(rothko_linear_model_file, "rb"))
+
+    # predict the years and put them into the correct bins
+    linear_predictions = linear_model.predict(features)
+    linear_predictions = linear_predictions.round().astype(int)
+    linear_pred_df = pd.DataFrame(data = {"predicted": linear_predictions})
+    bins = [1935, 1940, 1947, 1950, 1968, 1971]
+    linear_pred_df['predicted_year_bin']=pd.cut(linear_pred_df['predicted'], bins).astype(str)
+    linear_bins = linear_pred_df['predicted_year_bin'].tolist()
+
     # create the dictionary to return
-    image_info = {"image_data": d, "predicted_year_bin":predicted.tolist()}
+    image_info = {"image_data": d, "tree_predicted_year_bin":predicted.tolist(), 
+                    "linear_predicted_year_bins": linear_bins}
     return jsonify(image_info)
 
 
