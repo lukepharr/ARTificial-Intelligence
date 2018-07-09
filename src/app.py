@@ -21,7 +21,7 @@ rothko_linear_model_file = "../Rothko/models/linear_regression/RothkoLinearModel
 # Flask route for the root/index page
 #########################################################
 @app.route('/')
-def home():
+def go_home():
     return render_template('index.html', title='Home')
 
 #########################################################
@@ -56,11 +56,33 @@ def classify_rothko(imagefile):
                     "linear_predicted_year_bins": linear_bins}
     return jsonify(image_info)
 
+#########################################################
+# Flask route for the Artist Gallery page
+#########################################################
+@app.route('/artist_gallery')
+def show_artist_gallery():
+    return render_template('artist_gallery.html')
 
+#########################################################
+# Flask route for the Test Gallery page
+#########################################################
+@app.route('/test_gallery')
+def show_test_gallery():
+    return render_template('test_gallery.html')
+
+#########################################################
+# Flask route for the Data page
+#########################################################
+@app.route('/data')
+def show_data():
+    return render_template('data.html')
+
+#########################################################
+# Flask route for the About Us page
+#########################################################
 @app.route('/about')
-def thesis():
-    return render_template('about.html', title='Water We Doing? - A Summary')
-
+def show_about():
+    return render_template('about.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
