@@ -9,6 +9,7 @@ var resultText1 = "Decision Tree Model Predicted Year : ";
 var resultText2 = "<br>Decision Tree Model Classification : ";
 var resultText3 = "<br><br>Random Forest Model Predicted Year : ";
 var resultText4 = "<br>Random Forest Model Classification : ";
+var waitText = "Please wait while we classify your selected image: "
 
 // A dictionary of the year ranges and their corresponding names as specified on the 
 // artist-gallery page
@@ -51,22 +52,22 @@ function predictRothko() {
     if (document.getElementById('inlineRadio1').checked) {
         // Get the name of the selected image
         var art = document.getElementById('inlineRadio1').value;
-        console.log(art);
+        d3.select("#result-panel").html(waitText + art + "...");
         classifyRothko(art);
     } else if (document.getElementById('inlineRadio2').checked) {
         // Get the name of the selected image
         var art = document.getElementById('inlineRadio2').value;
-        console.log(art);
+        d3.select("#result-panel").html(waitText + art + "...");
         classifyRothko(art);
     } else if (document.getElementById('inlineRadio3').checked) {
         // Get the name of the selected image
         var art = document.getElementById('inlineRadio3').value;
-        console.log(art);
+        d3.select("#result-panel").html(waitText + art + "...");
         classifyRothko(art);
     } else if (document.getElementById('inlineRadio4').checked) {
         // Get the name of the selected image
         var art = document.getElementById('inlineRadio4').value;
-        console.log(art);
+        d3.select("#result-panel").html(waitText + art + "...");
         classifyRothko(art);
     } else {
         alert("Please select an image to classify.");
