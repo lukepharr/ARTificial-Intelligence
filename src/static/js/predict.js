@@ -1,5 +1,6 @@
 /**
- * This javascript file contains the code to use the models to predict test images
+ * This javascript file contains the code to use the models to classify test images in the Test Gallery
+ * page. This code is used by test_gallery.html
  * 
  * @author Rupali Mayekar
  */
@@ -18,7 +19,6 @@ var alertText = "Please select an image to classify.";
 // artist-gallery page
 var rothkoClassification = {"(1935, 1940]":"Figurative", "(1940, 1947]": "Surrealism",
         "(1947, 1950]":"Multiform", "(1950, 1968]":"Mature", "(1968, 1971]":"Late"};
-// bins = [1935, 1940, 1947, 1950, 1968, 1971]
 
 /**
  * 
@@ -45,7 +45,7 @@ function classifyRothko (art) {
 };
 
 /**
- * This function is called when the Predict button on the Test Gallery page is clicked
+ * This function is called when the Classify button on the Test Gallery page is clicked
  */
 function predictRothko() {
 
@@ -75,14 +75,6 @@ function predictRothko() {
 }
 
 /**
- * This function clears the Radio button selection and the panel text
- */
-function clearRothko() {
-    d3.select("#result-panel").html(clearText);
-
-}
-
-/**
  * 
  * @param {string} art  is the name of the image file used to test the model. The flask route
  * will look for this file in the static/images/test/morris folder and use it to classify using
@@ -106,7 +98,7 @@ function classifyMorris (art) {
 };
 
 /**
- * This function is called when the Predict button on the Test Gallery page is clicked
+ * This function is called when the Classify button on the Test Gallery page is clicked
  */
 function predictMorris() {
     console.log("PredictMorris");
