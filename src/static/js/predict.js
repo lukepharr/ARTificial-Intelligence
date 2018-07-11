@@ -14,6 +14,18 @@ var waitText = "Please wait while we classify your selected image: ";
 var clearText = "Select an image above and click the Classify button to see how the models classifies it.";
 var alertText = "Please select an image to classify.";
 
+var artistlink1 = '<a target="_blank" href="../artist_gallery/';
+var artistlink2 = '">'
+var artistlink3 = '</a>';
+
+// ['themes_variations_59_60',
+//  'stripe_paintings_61_62',
+//  'abstract_expressionist_55_57',
+//  'veil_paintings_58_59',
+//  'unfurled_paintings_60_61',
+//  'early_paintings_34_53',
+//  'veil_paintings_54']
+
 
 // A dictionary of the year ranges and their corresponding names as specified on the 
 // artist-gallery page
@@ -37,8 +49,8 @@ function classifyRothko (art) {
         console.log(forestPrediction);
 
         // populate the value in the result panel
-        var panelText = resultText1 + treePrediction + resultText2 + rothkoClassification[treePrediction]
-            + resultText3 + forestPrediction + resultText4 + rothkoClassification[forestPrediction];
+        var panelText = resultText1 + treePrediction + resultText2 + artistlink1 + rothkoClassification[treePrediction] + artistlink2 + rothkoClassification[treePrediction] + artistlink3 +
+            resultText3 + forestPrediction + resultText4 + artistlink1 + rothkoClassification[forestPrediction] + artistlink2 + rothkoClassification[forestPrediction] + artistlink3;
         d3.select("#result-panel").html(panelText);
     });
 
@@ -83,15 +95,16 @@ function predictRothko() {
 function classifyMorris (art) {
     // Call the flask route to classify this morris art image
     var route = '/classify_morris/'+art;
+    console.log(route);
     d3.json(route, function(error, response) {
         console.log(response);
         var treePrediction = response.tree_predicted_year_bin[0]
         var forestPrediction = response.random_forest_predicted_year_bin[0]
         console.log(treePrediction);
-        console.log(forestPrediction);
 
         // populate the value in the result panel
-        var panelText = resultText2 + treePrediction + resultText4 + forestPrediction;
+        var panelText = resultText2 + artistlink1 + treePrediction + artistlink2 + treePrediction + artistlink3
+         + resultText4 + artistlink1 + forestPrediction + artistlink2 + forestPrediction + artistlink3;
         d3.select("#result-panel-morris").html(panelText);
     });
 
@@ -101,7 +114,6 @@ function classifyMorris (art) {
  * This function is called when the Classify button on the Test Gallery page is clicked
  */
 function predictMorris() {
-    console.log("PredictMorris");
     if (document.getElementById('inlineRadioMorris1').checked) {
         // Get the name of the selected image
         var art = document.getElementById('inlineRadioMorris1').value;

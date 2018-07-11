@@ -92,14 +92,21 @@ def classify_morris(imagefile):
     # create the dictionary to return
     image_info = {"image_data": d, "tree_predicted_year_bin":tree_predicted.tolist(), 
                     "random_forest_predicted_year_bin":random_predicted.tolist()}
-    
+    print(image_info)
     return jsonify(image_info)
 
+#########################################################
+# Flask route for the specific section of the Artist Gallery page
+#########################################################
+@app.route('/artist_gallery/<ref>')
+def show_artist_gallery(ref):
+    return render_template('artist_gallery.html', section = ref)
+    
 #########################################################
 # Flask route for the Artist Gallery page
 #########################################################
 @app.route('/artist_gallery')
-def show_artist_gallery():
+def artist_gallery():
     return render_template('artist_gallery.html')
 
 #########################################################
