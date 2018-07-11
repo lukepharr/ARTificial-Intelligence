@@ -21,7 +21,8 @@
 
   </head>
   <body>
-
+        <br> 
+        
         <header>
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                   <a class="navbar-brand" href="/">ARTificial Intelligence</a>
@@ -48,102 +49,166 @@
               </header>
 
     <main role="main">
-      <br><br><br>
-
+      
       <!-- Wrap the rest of the page in another container to center all the content. -->
 
       <div class="container marketing">
 
-          <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
-          <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-              <h2 class="featurette-heading">Test Gallery</h2>
-              <p class="lead">Subhead here
-                <br>We've built a machine learning model to predict the year a painting was created. More details needed here...</p>
-            </div>
-            <div class="col-md-5 order-md-1">
-              <img class="featurette-image img-fluid mx-auto" src="" alt="Generic placeholder image">
-            </div>
-          </div>
-
-          <hr class="featurette-divider">
-
-          <div class="row featurette">
-            <div class="col-md-12 order-md-1">
-              <h2 class="featurette-heading">Mark Rothko models</h2>
-              <p class="lead">Mark Rothko Art
-                <br>Below are some of Mark Rothko's paintings that we will use to test our Machine Learning models
-              </p>
-
-              <div class="row">
-  
-                <div class="col-md-3 order-md-1">
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1937_1.jpg"> 1937_1.jpg
-                    <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1937_1.jpg" alt="Generic placeholder image">
-                  </label>
-                </div>
-  
-                <div class="col-md-3 order-md-2">
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1945_4.jpg"> 1945_4.jpg
-                    <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1945_4.jpg" alt="Generic placeholder image">
-                  </label>
-                </div>
-
-                <div class="col-md-3 order-md-3">
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="1948_4.jpg"> 1948_4.jpg
-                    <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1948_4.jpg" alt="Generic placeholder image">
-                  </label>
-                </div>
-
-                <div class="col-md-3 order-md-4">
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="1955_11.jpg"> 1955_11.jpg
-                    <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1955_11.jpg" alt="Generic placeholder image">
-                  </label>
-                </div>
-              </div><!--div class="row"-->
+        <div class="row featurette">
+          <div class="col-md-12 order-md-1">
+            <h2 class="featurette-heading">Machine Learning Models</h2>
+            <p class="lead">
+              <br>We've built Supervised Machine Learning Models to predict the time period in which a painting by a specific artist 
+              was created. For each of the artist, we have models based on the Decision Tree Classification Algorithm 
+              and a Random Forest Classifier. We used python's image processing libraries to generate metrics based on 
+              the available art images. These are metrics that indicate the complexity of an image, the contours, 
+              the luminance, the contrast in an image, mean_rgb colors, etc. 
+              <br><br> The models use these metrics as the features
+              for training and prediction and determine the year range or style as it varies 
+              over a time period. These models were tweaked and saved to be used for classifying any art/painting 
+              image into these predefined time periods of the artists' work. To see more painting of the astists categorized by
+              the time periods, visit the <a href="../artist_gallery">Artist's Gallery</a>.
               <br><br>
-
-              <div class="row">
-                <button class="btn btn-primary" onclick="predictRothko()">Classify</button>&nbsp;&nbsp;
-                <button class="btn btn-primary" type="submit">Clear</button>&nbsp;&nbsp;
-                <button class="btn btn-primary" type="submit">View Rothko Art</button>
-              </div>
-              <br>
-
-              <div class="row">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">
-                    <h5 class="panel-title">Classification Result:</h5>
-                  </div>
-                  <div class="panel-body" id="result-panel">
-                    Select an image above and click the Classify button to see how the models classifies it.
-                  </div>
-                </div>
-              </div>
-
-
-
-
-
-              <br><br><br>
-              <div class="row">
-                <p class="lead">Other Art
-                  <br>Below is art created by a talented artist who is influenced by Rothko's style. We will use these to see which of Rothko's style our model classifies them into.
-                </p>
-              </div>
+            </p>
+          </div>
+          <div class="col-md-12 order-md-1">
+            <h4>Mark Rothko Decision Tree Model</h4><br><br>
+            <img class="featurette-image img-fluid mx-auto" src="../static/images/RothkoTree.png" alt="Generic placeholder image">
+          </div>
+          <div class="col-md-12 order-md-1">
+              <br><br><h4>Morris Louis Decision Tree Model</h4><br><br>
+              <img class="featurette-image img-fluid mx-auto" src="../static/images/MorrisTree.png" alt="Generic placeholder image">
             </div>
           </div>
-  
 
-          <hr class="featurette-divider">
+        <hr class="featurette-divider">
 
- 
+        <div class="row featurette">
+          <div class="col-md-12 order-md-1">
+            <h2 class="featurette-heading">Mark Rothko Art Models</h2>
+            <p class="lead">Mark Rothko Art
+              <br>Below are some of Mark Rothko's paintings that we will use to test our Machine Learning models that we created for this artist.
+            </p>
 
+            <div class="row">
+
+              <div class="col-md-3 order-md-1">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1937_1.jpg"> 1937_1.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1937_1.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-2">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1945_4.jpg"> 1945_4.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1945_4.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-3">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="1948_4.jpg"> 1948_4.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1948_4.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-4">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="1955_11.jpg"> 1955_11.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1955_11.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+            </div><!--div class="row"-->
+            <br>
+
+            <div class="row">
+              <button class="btn btn-primary" onclick="predictRothko()">Classify</button>&nbsp;&nbsp;
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h5 class="panel-title">Classification Result:</h5>
+                </div>
+                <div class="panel-body" id="result-panel">
+                  Select an image above and click the Classify button to see how the models classifies it.
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <div class="row">
+              <p class="lead">Other Art
+                <br>Below is art created by a talented artist who is influenced by Rothko's style. We will use these to see which of Rothko's style our model classifies them into.
+              </p>
+            </div>
+          </div><!--div class="col-md-12 order-md-1"-->
+        </div> <!--div class="row featurette"-->
+
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-12 order-md-1">
+            <h2 class="featurette-heading">Morris Louis Art Models</h2>
+            <p class="lead">
+              <br>Below are some of Morris Louis' paintings that we will use to test our Machine Learning models that we created for this artist.
+            </p>
+
+            <div class="row">
+
+              <div class="col-md-3 order-md-1">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris1" value="du25.jpg"> du25.jpg (early_paintings_34_53)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du25.jpg" alt="du25.jpg">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-2">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris2" value="du223.jpg"> du223.jpg (themes_variations_59_60)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du223.jpg" alt="du223.jpg">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-3">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris3" value="du141.jpg"> du141.jpg (veil_paintings_58_59)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du141.jpg" alt="du141.jpg">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-4">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris4" value="du331.jpg"> du331.jpg (unfurled_paintings_60_61)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du331.jpg" alt="du331.jpg">
+                </label>
+              </div>
+            </div><!--div class="row"-->
+            <br>
+
+            <div class="row">
+              <button class="btn btn-primary" onclick="predictMorris()">Classify</button>&nbsp;&nbsp;
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h5 class="panel-title">Classification Result:</h5>
+                </div>
+                <div class="panel-body" id="result-panel-morris">
+                  Select an image above and click the Classify button to see how the models classifies it.
+                </div>
+              </div>
+            </div>
+            <hr class="featurette-divider">
+          </div>
+        </div>
       </div><!-- /.container -->
 
 

@@ -13,10 +13,12 @@ import metrics
 
 app = Flask(__name__)
 
-# The path to the Rothko Decision Tree model
-rothko_tree_model_file = "../Rothko/models/TREE/RothkoDecisionTree.pkl"
-rothko_linear_model_file = "../Rothko/models/linear_regression/RothkoLinearModel.pkl"
-rothko_random_forest_model_file = "../Rothko/models/TREE/RothkoRandomForestModel.pkl"
+# The path to the Rothko and Morris models
+rothko_tree_model_file = "./models/RothkoDecisionTree.pkl"
+rothko_linear_model_file = "./models/RothkoLinearModel.pkl"
+rothko_random_forest_model_file = "./models/RothkoRandomForestModel.pkl"
+morris_tree_model_file = "./models/MorrisDecisionTree.pkl"
+morris_random_forest_model_file = "./models/MorrisRandomForestModel.pkl"
 
 #########################################################
 # Flask route for the root/index page
@@ -40,7 +42,7 @@ def classify_rothko(imagefile):
     features = [[d["shannon_entropy"][0], d["mean_color_r"][0], d["luminance"][0], d["contrast"][0], d["contour"][0] ]]
 
     # use the model to predict the year bin
-    predicted = decision_tree_model.predict(features)
+    tree_predicted = decision_tree_model.predict(features)
 
     # load the rothko decision tree model from disk
     random_forest_model = pickle.load(open(rothko_random_forest_model_file, "rb"))
@@ -60,9 +62,37 @@ def classify_rothko(imagefile):
     linear_bins = linear_pred_df['predicted_year_bin'].tolist()
 
     # create the dictionary to return
-    image_info = {"image_data": d, "tree_predicted_year_bin":predicted.tolist(), 
+    image_info = {"image_data": d, "tree_predicted_year_bin":tree_predicted.tolist(), 
                     "random_forest_predicted_year_bin":random_predicted.tolist(),
                     "linear_predicted_year_bins": linear_bins}
+    return jsonify(image_info)
+
+#########################################################
+# Flask route to classify a Morris Louis Image. The <imagefile> 
+# is expected to exist in the static/images/test/morris/ folder
+#########################################################
+@app.route('/classify_morris/<imagefile>')
+def classify_morris(imagefile):
+    # get the metrics for the image that we need for the input features for the model
+    d = metrics.get_image_data("static/images/test/morris/"+imagefile)
+    features = [[d["shannon_entropy"][0], d["mean_color_r"][0], d["luminance"][0], d["contrast"][0], d["contour"][0] ]]
+
+    # load the morris decision tree model from disk
+    decision_tree_model = pickle.load(open(morris_tree_model_file, "rb"))
+
+    # use the model to predict the year bin
+    tree_predicted = decision_tree_model.predict(features)
+
+    # load the morris decision tree model from disk
+    random_forest_model = pickle.load(open(morris_random_forest_model_file, "rb"))
+
+    # use the model to predict the year bin
+    random_predicted = random_forest_model.predict(features)
+
+    # create the dictionary to return
+    image_info = {"image_data": d, "tree_predicted_year_bin":tree_predicted.tolist(), 
+                    "random_forest_predicted_year_bin":random_predicted.tolist()}
+    
     return jsonify(image_info)
 
 #########################################################

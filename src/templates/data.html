@@ -12,8 +12,12 @@
     <!-- Bootstrap core CSS -->
     <link href="https://bootswatch.com/4/sketchy/bootstrap.css" rel="stylesheet">
 
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
     <!-- Custom styles for this template -->
-    <link href="../css/carousel.css" rel="stylesheet">
+    <link href="../static/css/carousel.css" rel="stylesheet">
+
+    
   </head>
   <body>
 
@@ -43,7 +47,7 @@
     </header>
 
     <main role="main">
-      <br><br><br>
+      <br>
 
 
 
@@ -59,14 +63,15 @@
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">The Data</h2>
-            <p class="lead">Subhead about the data.</p>
+            <h2 class="featurette-heading">Data Tables</h2>
+            <p class="lead">Review the data used for each artist's models by selecting either <a href="#RothkoData">Rothko</a> or <a href="#MorrisData">Morris</a>.</p>
           </div>
           <div class="col-md-5">
             
           </div>
         </div>
 
+        <a id="RothkoData"></a>
         <hr class="featurette-divider">
 
 
@@ -79,24 +84,22 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">Type</th>
-                <th scope="col">Column heading</th>
-                <th scope="col">Column heading</th>
-                <th scope="col">Column heading</th>
+                <th scope="col">Index</th>
+                <th scope="col">Contour</th>
+                <th scope="col">Contrast</th>
+                <th scope="col">Luminance</th>
+                <th scope="col">Mean Color</th>
+                <th scope="col">Mean Color - Red</th>
+                <th scope="col">Shannon Entropy</th>
+                <th scope="col">Year</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Default</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
+            <tbody id="Rothko">
             </tbody>
           </table> 
         </div>
 
-  
+        <a id="MorrisData"></a>
         <hr class="featurette-divider">
 
         <div class="row featurette">
@@ -108,19 +111,17 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th scope="col">Type</th>
-                <th scope="col">Column heading</th>
-                <th scope="col">Column heading</th>
-                <th scope="col">Column heading</th>
+                <th scope="col">Index</th>
+                <th scope="col">Contour</th>
+                <th scope="col">Contrast</th>
+                <th scope="col">Luminance</th>
+                <th scope="col">Mean Color</th>
+                <th scope="col">Mean Color -Red</th>
+                <th scope="col">Shannon Entropy</th>
+                <th scope="col">Period</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Default</th>
-                <td>Column content</td>
-                <td>Column content</td>
-                <td>Column content</td>
-              </tr>
+            <tbody id="Morris">
             </tbody>
           </table> 
         </div>
@@ -143,10 +144,19 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"><\/script>')</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"><\/script>')</script>
     <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
-    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script> -->
+    <!-- d3 JavaScript -->
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+
+    <!-- Javascript for populating the tables -->
+    <script src="../static/js/datatable.js"></script> -->
+
+    
+
+
 
   </body>
 </html>

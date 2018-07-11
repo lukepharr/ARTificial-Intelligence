@@ -57,36 +57,43 @@
           <div class="row featurette">
             <div class="col-md-7 order-md-2">
               <h2 class="featurette-heading">About: ARTificial Intelligence</h2>
-              <p class="lead">Copy needed here... Use the sections below to outline the process.
+              <p class="lead">Navigate through the site using these links:
+                <ul>
+                  <li><a href="/test_gallery">Test Gallery</a>: Test the application on selected paintings.</li>
+                  <li><a href="/artist_gallery">Artist's Gallery</a>: Review a sampling of each artist's works from each key time period.</li>
+                  <li><a href="/data">Data</a>: Review the data used to build the models.</li>
+                  
+                </ul>
+                </p>
             </div>
             <div class="col-md-5 order-md-1">
-              <img class="featurette-image img-fluid mx-auto" src="" alt="Generic placeholder image">
+              <!-- <img class="featurette-image img-fluid mx-auto" src="" alt="Generic placeholder image"> -->
             </div>
           </div>
 
           <hr class="featurette-divider">
 
-        <!-- Three columns of text below the carousel -->
+        <!-- Three columns of text below the carousel
         <div class="row">
           <div class="col-lg-4">
-            <img class="rounded-circle" src="../static/images/1936.jpeg" alt="Generic placeholder image" width="140" height="140">
-            <h2>Rural Scene (1936)</h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
-            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
             <img class="rounded-circle" src="../static/images/1948.jpeg" alt="Generic placeholder image" width="140" height="140">
-            <h2>Multiform (1948)</h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+            <h2>Morris Louis</h2>
+            <!-- <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p> -->
             <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
+          <!-- </div>/.col-lg-4 -->
+          <!-- <div class="col-lg-4"> -->
+            <!-- <img class="rounded-circle" src="../static/images/1936.jpeg" alt="Generic placeholder image" width="140" height="140">
+            <h2>Marko Rothko</h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p> -->
+            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+          <!-- </div>/.col-lg-4 -->
+          <!-- <div class="col-lg-4">
             <img class="rounded-circle" src="../static/images/1969.jpeg" alt="Generic placeholder image" width="140" height="140">
             <h2>Untitled (1969)</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. </p>
-            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p> -->
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. </p> --> -->
+            <!-- <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+        <!-- </div>/.row --> -->
 
 
         <!-- START THE FEATURETTES -->
@@ -98,8 +105,12 @@
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
 
-            <h2 class="featurette-heading">Section 1</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            <h2 class="featurette-heading">Project Background</h2>
+            <p class="lead">Inspired by the paintings of Marko Rothko and Morris Louis, the goal of this application is to identify the time period of each artist's paintings using machine learning techniques.
+              Initially, the goal was to use a neural network to predict the year painted for each painter's works, but this did was not the best model due to a need for a larger dataset.
+              <h4>How Does the Application Work?</h4>
+              <section>The application is powered by a Python Flask application. Machine learning models were explored using Python's skikit-learn library to extract specific metrics from each artist's paintings and then test the relationships between these metrics.</section>
+            </p>
           </div>
           <div class="col-md-5 order-md-1">
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
@@ -111,9 +122,14 @@
 
         <div class="row featurette">
           <div class="col-md-7">
-            <h2 class="featurette-heading">Section 2</h2>
-            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-          </div>
+            <h2 class="featurette-heading">Process</h2>
+            <p class="lead">
+              <h4>Gathering the Images</h4>
+              <h4>Extracting the Metrics</h4>
+              <h4>Exploring the Relationships</h4>
+              <h4>Model Testing and Selections</h4>
+            
+            </p>
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
@@ -124,7 +140,7 @@
 
         <div class="row featurette">
           <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Section 3</h2>
+            <h2 class="featurette-heading">Conclusions</h2>
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
           </div>
           <div class="col-md-5 order-md-1">
@@ -132,10 +148,10 @@
           </div>
         </div>
 
-        <a id="section4"></a>
-        <hr class="featurette-divider">
+        <!-- <a id="section4"></a>
+        <hr class="featurette-divider"> -->
 
-        <div class="row featurette">
+        <!-- <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">Section 4</h2>
             <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
@@ -143,7 +159,7 @@
           <div class="col-md-5">
             <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
           </div>
-        </div>
+        </div> -->
 
         <hr class="featurette-divider">
 
