@@ -79,6 +79,15 @@
                 Initially, the goal was to use a neural network to predict the year painted for each painter's works, but this did was not the best model due to a need for a larger dataset.
                 <h3>How Does the Application Work?</h3>
                 The application is powered by a Python Flask application. Machine learning models were explored using Python's skikit-learn library to extract specific metrics from each artist's paintings and then test the relationships between these metrics.
+                Tools used are: 
+                <ul>
+                  <li>Python Flask App</li>
+                  <li>Python SciKit Library: skikit-image,sklearn.linear_model,sklearn.model_selection,
+                    sklearn.decomposition,sklearn.ensemble,sklearn.ensemble
+                  </li>
+                  <li>HTML,CSS,Bootstrap</li>
+                  <li>Javascript D3</li>
+                </ul>
               </p>
             </div>
             <!-- <div class="col-md-5 order-md-1">
@@ -93,7 +102,40 @@
             <h2 class="featurette-heading">Process</h2>
             <p class="lead">
               <h4>Gathering the Images</h4>
+              The digital images for each artist's paintings were collected through online searches. 
+              While web scraping was used for some of the image collection, most of the process was 
+              performed manually.
+              In total, 166 Rothko paintings and 660 Louis paintings were collected to build the prediction models.
               <h4>Extracting the Metrics</h4>
+              Every image is made of many pixels. Instead of running a prediction using the individual pixels from each image, 
+              image properties summarizing different pixel patterns and characteristics were
+              extracted from each image providing a more efficient dataset to build 
+              the prediction model.<br>
+              The image properties (metrics) below were extracted from each painting and can be found
+              in the <a href="/data">Data Tables</a>
+              
+              <ul>
+                <li>Contour: Extracting the contour is essentially extracting the general 
+                  shape of the pixel pattern. A pattern can be identified when boundary pixels show an ordered sequence.
+                </li>
+                <li>Contrast: This property describes the difference in color and brightness
+                  within the digital image.
+                </li>
+                <li>Mean Color: Each pixel is measured for a red, green and blue value. From there, each red, green and blue
+                  value is averaged to achieve an overall average value for the painting.
+                </li>
+                <li>Mean Color-Red: The red mean color value for each painting was used to correlate time period predictions 
+                  because the red colors appears to change the most over time with Rothko and Morris' paintings.
+                </li>
+                <li>Luminance: This shows the brightness of color and is calculated by using the 
+                  averaged red, green and blue values to calculate a luminance value: =(0.2126*R + 0.7152*G + 0.0722*B).
+                  This shows the difference in how the human eye perceives red, green and blue colors. For instance, green 
+                  light is most intensively perceived by the human eye.
+                </li>
+                <li>Shannon Entropy: This measures the business of an image. Greater entropy means a more complex image resulting in a 
+                  larger flattened file.
+                </li>
+              </ul>
               <h4>Exploring the Relationships</h4>
               <h4>Model Testing and Selections</h4>
             
