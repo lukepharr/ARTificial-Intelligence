@@ -57,25 +57,26 @@
           <div class="col-md-12 order-md-1">
             <h2 class="featurette-heading">Machine Learning Models</h2>
             <p class="lead">
-              <br>We've built Supervised Machine Learning Models to predict the time period in which a painting by a specific artist 
-              was created. For each of the artist, we have models based on the Decision Tree Classification Algorithm 
+              We've built Supervised Machine Learning Models to predict the time period in which a painting by a specific artist 
+              was created. For each of the artists, we have models based on the Decision Tree Classification Algorithm 
               and a Random Forest Classifier. We used python's image processing libraries to generate metrics based on 
-              the available art images. These are metrics that indicate the complexity of an image, the contours, 
-              the luminance, the contrast in an image, mean_rgb colors, etc. 
+              the available art images. These are metrics that indicate the complexity of an image, contours, 
+              luminance, contrast, mean_rgb colors, etc. You can view these in the <a href="../data">Data Tables</a>.
               <br><br> The models use these metrics as the features
-              for training and prediction and determine the year range or style as it varies 
-              over a time period. These models were tweaked and saved to be used for classifying any art/painting 
-              image into these predefined time periods of the artists' work. To see more painting of the astists categorized by
-              the time periods, visit the <a href="../artist_gallery">Artist's Gallery</a>.
+              for training and prediction and determine the time period or style as it varies 
+              over a time period. These models were tweaked and saved to be used for classifying any of the artists' art 
+              into these predefined time periods/styles of the artists' work. To see more painting of the astists categorized by
+              the time periods/styles, visit the <a href="../artist_gallery">Artist's Gallery</a>.
               <br><br>
             </p>
+            <hr class="featurette-divider">
           </div>
           <div class="col-md-12 order-md-1">
-            <h4>Mark Rothko Decision Tree Model</h4><br><br>
+            <h3>Mark Rothko Decision Tree Model</h3><br><br>
             <img class="featurette-image img-fluid mx-auto" src="../static/images/RothkoTree.png" alt="Generic placeholder image">
           </div>
           <div class="col-md-12 order-md-1">
-              <br><br><h4>Morris Louis Decision Tree Model</h4><br><br>
+              <br><br><h3>Morris Louis Decision Tree Model</h3><br><br>
               <img class="featurette-image img-fluid mx-auto" src="../static/images/MorrisTree.png" alt="Generic placeholder image">
             </div>
           </div>
@@ -84,7 +85,7 @@
 
         <div class="row featurette">
           <div class="col-md-12 order-md-1">
-            <h2 class="featurette-heading">Mark Rothko Art Models</h2>
+            <h3 class="featurette-heading">Mark Rothko Model Tests</h3>
             <p class="lead">
               <br>Here are some of Mark Rothko's paintings that we will use to test our Machine Learning models that we created for this artist.
             </p>
@@ -132,7 +133,7 @@
                   <h5 class="panel-title">Classification Result:</h5>
                 </div>
                 <div class="panel-body" id="result-panel">
-                  Select an image above and click the Classify button to see how the models classifies it.
+                  Select an image above and click the Classify button to see how the models classify it.
                 </div>
               </div>
             </div>
@@ -144,7 +145,7 @@
 
         <div class="row featurette">
           <div class="col-md-12 order-md-1">
-            <h2 class="featurette-heading">Morris Louis Art Models</h2>
+            <h3 class="featurette-heading">Morris Louis Model Tests</h3>
             <p class="lead">
               <br>Here are some of Morris Louis' paintings that we will use to test our Machine Learning models that we created for this artist.
             </p>
@@ -192,7 +193,7 @@
                   <h5 class="panel-title">Classification Result:</h5>
                 </div>
                 <div class="panel-body" id="result-panel-morris">
-                  Select an image above and click the Classify button to see how the models classifies it.
+                  Select an image above and click the Classify button to see how the models classify it.
                 </div>
               </div>
             </div>
