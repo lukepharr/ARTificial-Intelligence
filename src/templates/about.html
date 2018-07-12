@@ -76,18 +76,22 @@
 
               <h2 class="featurette-heading">Project Background</h2>
               <p class="lead">Inspired by the paintings of Marko Rothko and Morris Louis, the goal of this application is to identify the time period of each artist's paintings using machine learning techniques.
-                The initial intention was to use a neural network to predict the year painted for each painter's works, but this did was not the best model due to a need for a larger dataset.
-                We found that predicting a year timeframe using a decision tree model yielded the best results. 
-                <h3>How Does the Application Work?</h3>
-                The application is powered by a Python Flask application. Machine learning models were explored using Python's skikit-learn library to extract specific metrics from each artist's paintings and then test the relationships between these metrics.
-                Tools used are: 
+                The initial intention was to use a neural network to predict the year painted for each painter's works, but this was not the best model due to a need for a larger dataset.
+                We explored various models like Linear Regression, clustering models like K Means, and classification models like Decision Tree and Random Forest. 
+                We found that predicting a year timeframe using the Decision Tree Model yielded the best results. 
+                <h3>How does the Application Work?</h3>
+                The website is powered by a Python Flask Application. Machine learning models were explored in Jupyter Notebook using Python's scikit-learn library to extract specific metrics 
+                from each artist's paintings and then test the correlation of these metrics with the year of the painting. These models were saved and reused by the Test Gallery via FLask. The 
+                Test Gallery has images from different time periods of each artist's career. These are not a part of the dataset that
+                the models were trained on. On clicking the Classify button, the metrics for the selected image are calculated, corresponding models are loaded
+                and used to predict the time period for the selected image.
+                <br><br>Tools used are: 
                 <ul>
                   <li>Python Flask App</li>
-                  <li>Python SciKit Library: some of the API's utilized were skikit-image,sklearn.linear_model,sklearn.model_selection,
-                    sklearn.decomposition,sklearn.ensemble,sklearn.ensemble
+                  <li>Python SciKit Library: some of the API's utilized were skikit-image, sklearn.linear_model, sklearn.model_selection, sklearn.decomposition, sklearn.ensemble
                   </li>
-                  <li>HTML,CSS,Bootstrap</li>
-                  <li>Javascript D3</li>
+                  <li>HTML, CSS, Bootstrap</li>
+                  <li>Javascript, D3</li>
                 </ul>
               </p>
             </div>
@@ -104,9 +108,8 @@
             <p class="lead">
               <h4>Gathering the Images</h4>
               The digital images for each artist's paintings were collected through online searches. 
-              While web scraping was used for some of the image collection, most of the process was 
-              performed manually.
-              In total, 166 Rothko paintings and 660 Louis paintings were collected to build the prediction models.<br><br>
+              While web scraping was used for all of the Morris Louis image collection, the Mark Rothko images were 
+              gathered manually. In total, 166 Rothko paintings and 660 Louis paintings were collected to build the prediction models.<br><br>
               <h4>Extracting the Metrics</h4>
               Every image is made of many pixels. Instead of running a prediction using the individual pixels from each image, 
               image properties summarizing different pixel patterns and characteristics were
@@ -141,8 +144,8 @@
               <h4>Model Testing and Selections</h4>
               Three different types of models were evaluated to build the Rothko and Morris prediction models.   <br><br>      
               
-                <h5>Regression</h5>Linear regression was the first model evaluated as this is the most straightforward type of model with one independent variable--year--and 
-                one or more dependent variables--the above metrics. The metrics were checked individually and together for a linear relationship, with highest correlation
+                <h5>Regression</h5>Linear regression was the first model evaluated as this is the most straightforward type of model with one independent variable - year and 
+                one or more dependent variables - the above metrics. The metrics were checked individually and together for a linear relationship, with highest correlation
                   resulting from shannon entropy. Multilinear relationships were also explored using multiple metrics but proved not much more successful than using 
                   shannon entropy individually. Scores for the regression models were at 0.5 or less. <br><br>
                   
@@ -153,9 +156,16 @@
                 clusters overlapped significantly with indistinct boundaries. This was not surprising because the linear regression did not prove a strong correlation. <br><br>
                 
                 <h5>Classification: Decision Tree and Random Forest</h5> Decision trees are used to classify datasets visually, going through a series of decisions
-                based on a selected set of features until each branch is no longer split to achieve the final classification decision. The features in the this case are: Shannon entropy, mean red color, luminance, contrast
+                based on a selected set of features until each branch is no longer split to achieve the final classification decision. The features in this case are: Shannon entropy, mean red color, luminance, contrast
                 and contour, and the final decision is which year bin to classify the painting. This model proved the best for both painter's but especially Rothko.  <br><br>
-                Links to the code can be found here. The model score for the Rothko decision tree was 0.809. 
+                Model Scores:
+                <ul>
+                  <li>Rothko Decision Tree: 80%</li>
+                  <li>Rothko Random Forest: 83%</li> 
+                  <li>Louis Decision Tree: 60%. </li>
+                  <li>Louis Random Forest: 59% </li>
+                </ul>
+                Links to the code can be found here. 
                 <ul>
                   <li>Rothko: <a href="https://github.com/cammster/ARTificial-Intelligence/tree/master/Rothko/models">Rothko Models</a> 
                   </li>
@@ -174,8 +184,9 @@
         <div class="row featurette">
           <div class="col-md-8 order-md-2">
             <h2 class="featurette-heading">Conclusions</h2>
-            Decision Tree models scored the highest for Rothko and Morris time period predictions. Rothko's works visibly change over time and 
-            now this is quantified and predictable utilizing machine learning models. 
+            Classification models scored the highest for Rothko and Morris time period predictions and both the 
+            Decision Tree and Random Forest were more or less similar in performance. The works of Mark Rothko and 
+            Morris Louis visibly change over time and now this is quantified and predictable using machine learning models. 
             <p class="lead"></p>
           </div>
 
