@@ -122,8 +122,24 @@
             </div><!--div class="row"-->
             <br>
 
+            <!--The form for the upload feature-->
+            <form method=post enctype=multipart/form-data>
+
+              <input type=file name=rothkofile>
+              <input class="btn btn-primary" type=submit value=Upload> 
+
+              {% if artist=='rothko'%}
+              <span id="rothkoFile" data="{{filename}}">{{filename}}{{msg}}</span> 
+              {% else %}
+              <span id="rothkoFile" data="">  </span>
+              {% endif %}
+
+            </form>
+            <br>
+
             <div class="row">
               <button class="btn btn-primary" onclick="predictRothko()">Classify</button>&nbsp;&nbsp;
+              &nbsp;&nbsp;<button class="btn btn-primary" onclick="clearRothkoUpload()">Clear</button>
             </div>
             <br>
 
@@ -133,7 +149,7 @@
                   <h5 class="panel-title">Classification Result:</h5>
                 </div>
                 <div class="panel-body" id="result-panel">
-                  Select an image above and click the Classify button to see how the models classify it.
+                  Select/upload an image and click the Classify button to see how the models classifies it.
                 </div>
               </div>
             </div>
@@ -182,8 +198,21 @@
             </div><!--div class="row"-->
             <br>
 
+            <!--The form for the upload feature-->
+            <form method=post enctype=multipart/form-data>
+              <input type=file name=louisfile>
+              <input class="btn btn-primary" type=submit value=Upload> 
+              {% if artist=='louis'%}
+              <span id="louisFile" data="{{filename}}"> {{filename}}{{msg}} </span>
+              {% else %}
+              <span id="louisFile" data="">  </span>
+              {% endif %}
+            </form>
+            <br>
+
             <div class="row">
               <button class="btn btn-primary" onclick="predictMorris()">Classify</button>&nbsp;&nbsp;
+              &nbsp;&nbsp;<button class="btn btn-primary" onclick="clearLouisUpload()">Clear</button>
             </div>
             <br>
 
@@ -193,7 +222,7 @@
                   <h5 class="panel-title">Classification Result:</h5>
                 </div>
                 <div class="panel-body" id="result-panel-morris">
-                  Select an image above and click the Classify button to see how the models classify it.
+                  Select/upload an image and click the Classify button to see how the models classifies it.
                 </div>
               </div>
             </div>
