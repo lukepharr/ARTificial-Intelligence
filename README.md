@@ -49,12 +49,14 @@ Decision trees are used to classify datasets visually, going through a series of
 * Rothko Random Forest: 83%
 * Louis Decision Tree: 60%.
 * Louis Random Forest: 59%
-* Links to the code can be found here.
-* Rothko: Rothko Models
-* Louis: Louis Models
+
+Links to the code can be found here:
+* Rothko: [Rothko Models](https://github.com/cammster/ARTificial-Intelligence/tree/master/Rothko/models)
+* Louis: [Louis Models](https://github.com/cammster/ARTificial-Intelligence/tree/master/Morris_Louis/models)
+
 
 ## Project Presentation
-The tool and project information is organized on this [website] (https://rothkoapp.herokuapp.com).
+The tool and project information is organized on this [website](https://rothkoapp.herokuapp.com).
 
 ## Conclusions
 Classification models scored the highest for Rothko and Morris time period predictions and both the Decision Tree and Random Forest were more or less similar in performance. The works of Mark Rothko and Morris Louis visibly change over time and now this is quantified and predictable using machine learning models.
