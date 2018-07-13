@@ -37,16 +37,16 @@ Shannon Entropy: This measures the business of an image. Greater entropy means a
 * #### Model Testing and Selection
 Three different types of models were evaluated to build the Rothko and Morris prediction models. 
 
-Regression
+##### Regression
 Linear regression was the first model evaluated as this is the most straightforward type of model with one independent variable - year and one or more dependent variables - the above metrics. The metrics were checked individually and together for a linear relationship, with highest correlation resulting from shannon entropy. Multilinear relationships were also explored using multiple metrics but proved not much more successful than using shannon entropy individually. Scores for the regression models were at 0.5 or less. 
 
-Clustering K-Means
+##### Clustering K-Means
 K-means models seek to cluster data into "k" number of groups that are each well represented by their means. It is successfully use when datasets are distinct and separated in a linear way. K-means models should result in visible clusters grouping the data points together, but when applied to the paintings, the resulting clusters overlapped significantly with indistinct boundaries. This was not surprising because the linear regression did not prove a strong correlation. 
 
-Classification: Decision Tree and Random Forest
+##### Classification: Decision Tree and Random Forest
 Decision trees are used to classify datasets visually, going through a series of decisions based on a selected set of features until each branch is no longer split to achieve the final classification decision. The features in this case are: Shannon entropy, mean red color, luminance, contrast and contour, and the final decision is which year bin to classify the painting. This model proved the best for both painter's but especially Rothko. 
 
-Model Scores:
+##### Model Scores:
 Rothko Decision Tree: 80%
 Rothko Random Forest: 83%
 Louis Decision Tree: 60%.
@@ -56,7 +56,7 @@ Rothko: Rothko Models
 Louis: Louis Models
 
 ## Project Presentation
-The tool and project information will be organized on one website. 
+The tool and project information is organized on this [website] (https://rothkoapp.herokuapp.com).
 
 ## Conclusions
 Classification models scored the highest for Rothko and Morris time period predictions and both the Decision Tree and Random Forest were more or less similar in performance. The works of Mark Rothko and Morris Louis visibly change over time and now this is quantified and predictable using machine learning models.
