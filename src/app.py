@@ -3,7 +3,7 @@
 ###########################################################################################
 import os
 from flask import Flask
-from flask import render_template, jsonify
+from flask import render_template, jsonify, request
 import pandas as pd
 
 from sklearn import tree
@@ -20,6 +20,8 @@ rothko_random_forest_model_file = "./models/RothkoRandomForestModel.pkl"
 morris_tree_model_file = "./models/MorrisDecisionTree.pkl"
 morris_random_forest_model_file = "./models/MorrisRandomForestModel.pkl"
 
+app.config['UPLOAD_FOLDER'] = 'uploads'
+
 #########################################################
 # Flask route for the root/index page
 #########################################################
@@ -29,16 +31,25 @@ def go_home():
 
 #########################################################
 # Flask route to classify a Rothko Image. The <imagefile> 
-# is expected to exist in the uploads folder
+# is expected to exist static/images/test/rothko folder and the uploadfile
+# in the uploads folder
 #########################################################
-@app.route('/classify_rothko/<imagefile>')
-def classify_rothko(imagefile):
+@app.route('/classify_rothko/<imagefile>/<uploadfile>')
+def classify_rothko(imagefile=None, uploadfile=None):
+    d = {}
+    # if the first parameter is "upload" then the uploadfile exists and we need to look
+    # into the uploads folder, else the corresponding test folder. 
+    if (imagefile=="upload"):
+        print("uploads/"+uploadfile)
+        d = metrics.get_image_data("uploads/"+uploadfile)
+    else :
+        d = metrics.get_image_data("static/images/test/rothko/"+imagefile)
+    
+
     # load the rothko decision tree model from disk
     decision_tree_model = pickle.load(open(rothko_tree_model_file, "rb"))
 
     # get the metrics for the image that we need for the input features for the model
-    # d = metrics.get_image_data("uploads/"+imagefile)
-    d = metrics.get_image_data("static/images/test/rothko/"+imagefile)
     features = [[d["shannon_entropy"][0], d["mean_color_r"][0], d["luminance"][0], d["contrast"][0], d["contour"][0] ]]
 
     # use the model to predict the year bin
@@ -69,12 +80,21 @@ def classify_rothko(imagefile):
 
 #########################################################
 # Flask route to classify a Morris Louis Image. The <imagefile> 
-# is expected to exist in the static/images/test/morris/ folder
+# is expected to exist static/images/test/morris folder and the uploadfile
+# in the uploads folder
 #########################################################
-@app.route('/classify_morris/<imagefile>')
-def classify_morris(imagefile):
+@app.route('/classify_morris/<imagefile>/<uploadfile>')
+def classify_morris(imagefile=None, uploadfile=None):
+
+    # if the first parameter is "upload" then the uploadfile exists and we need to look
+    # into the uploads folder, else the corresponding test folder. 
+    if (imagefile=="upload"):
+        print("uploads/"+uploadfile)
+        d = metrics.get_image_data("uploads/"+uploadfile)
+    else :
+        d = metrics.get_image_data("static/images/test/morris/"+imagefile)
+    
     # get the metrics for the image that we need for the input features for the model
-    d = metrics.get_image_data("static/images/test/morris/"+imagefile)
     features = [[d["shannon_entropy"][0], d["mean_color_r"][0], d["luminance"][0], d["contrast"][0], d["contour"][0] ]]
 
     # load the morris decision tree model from disk
@@ -89,9 +109,11 @@ def classify_morris(imagefile):
     # use the model to predict the year bin
     random_predicted = random_forest_model.predict(features)
 
+
     # create the dictionary to return
     image_info = {"image_data": d, "tree_predicted_year_bin":tree_predicted.tolist(), 
                     "random_forest_predicted_year_bin":random_predicted.tolist()}
+    print("############  Morris Louis Response ###############")
     print(image_info)
     return jsonify(image_info)
 
@@ -112,9 +134,39 @@ def artist_gallery():
 #########################################################
 # Flask route for the Test Gallery page
 #########################################################
-@app.route('/test_gallery')
+@app.route('/test_gallery', methods=['GET', 'POST'])
 def show_test_gallery():
-    return render_template('test_gallery.html')
+
+    # If it is a POST then we need to save the file to the uploads folder
+    if request.method == 'POST':
+        # if the post is via the rothkofile upload button
+        if request.files.get('rothkofile'):
+            print("GOT ROTHKO FILE !!!!!!!!!!!!!!!!!!!!!!")
+            # read the file
+            file = request.files['rothkofile']
+
+            # read the filename
+            filename = file.filename
+
+            # Save the file to the uploads folder
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return render_template('test_gallery.html', msg=" saved!", artist="rothko", filename=filename)
+        
+        # if the post is via the louisfile upload button
+        if request.files.get('louisfile'):
+            print("GOT LOUIS FILE !!!!!!!!!!!!!!!!!!!!!!")
+            # read the file
+            file = request.files['louisfile']
+
+            # read the filename
+            filename = file.filename
+
+            # Save the file to the uploads folder
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return render_template('test_gallery.html', msg=" saved!", artist="louis", filename=filename)
+
+    # for a GET  request there are no files to upload
+    return render_template('test_gallery.html', msg="", artist="", filename="")
 
 #########################################################
 # Flask route for the Data page
