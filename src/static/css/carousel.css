@@ -56,13 +56,19 @@ body {
 /* Featurettes
 ------------------------- */
 
+<<<<<<< HEAD
+/*.featurette-divider {
+  margin: 2rem 0;  Space out the Bootstrap <hr> more 
+}*/
+=======
 .featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  margin: 1.5rem 0; /* Space out the Bootstrap <hr> more */
 }
+>>>>>>> be0f07d2a0f51b5e39aa970ba207f59ecac8a47d
 
 /* Thin out the marketing headings */
 .featurette-heading {
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1;
   letter-spacing: -.05rem;
 }
@@ -86,6 +92,6 @@ body {
 
 @media (min-width: 62em) {
   .featurette-heading {
-    margin-top: 7rem;
+    margin-top: 0rem;
   }
 }

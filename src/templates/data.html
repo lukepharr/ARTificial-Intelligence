@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>ARTificial Intelligence: Machine Learning</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://bootswatch.com/4/sketchy/bootstrap.css" rel="stylesheet">
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/carousel.css" rel="stylesheet">
+
+    
+  </head>
+  <body>
+
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="/">ARTificial Intelligence</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/artist_gallery">Artist's Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/test_gallery">Test Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/data">The Data</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/about">About<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main">
+      <br>
+
+
+
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+
+
+        <!-- START THE FEATURETTES -->
+
+
+
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">Data Tables</h2>
+            <p class="lead">Review the data used for each artist's models by selecting either <a href="#RothkoData">Rothko</a> or <a href="#MorrisData">Morris</a>.</p>
+          </div>
+          <div class="col-md-5">
+            
+          </div>
+        </div>
+
+        <a id="RothkoData"></a>
+        <hr class="featurette-divider">
+
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Rothko Data</h2>
+                <p class="lead"></p>
+              </div>
+        <hr class="featurette-divider">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Contour</th>
+                <th scope="col">Contrast</th>
+                <th scope="col">Luminance</th>
+                <th scope="col">Mean Color</th>
+                <th scope="col">Mean Color - Red</th>
+                <th scope="col">Shannon Entropy</th>
+                <th scope="col">Year</th>
+              </tr>
+            </thead>
+            <tbody id="Rothko">
+            </tbody>
+          </table> 
+        </div>
+
+        <a id="MorrisData"></a>
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Morris Data</h2>
+                <p class="lead"></p>
+              </div>
+        <hr class="featurette-divider">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Contour</th>
+                <th scope="col">Contrast</th>
+                <th scope="col">Luminance</th>
+                <th scope="col">Mean Color</th>
+                <th scope="col">Mean Color -Red</th>
+                <th scope="col">Shannon Entropy</th>
+                <th scope="col">Period</th>
+              </tr>
+            </thead>
+            <tbody id="Morris">
+            </tbody>
+          </table> 
+        </div>
+
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+      </div><!-- /.container -->
+
+
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2018 Luke Pharr, Rupali Mayekar, Andrea Karaffa, David Richter, Jen Vacanti</p>
+      </footer>
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <!-- <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script> -->
+    <!-- d3 JavaScript -->
+    <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- Javascript for populating the tables -->
+    <script src="../static/js/datatable.js"></script> -->
+
+    
+
+
+
+  </body>
+</html>

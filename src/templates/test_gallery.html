@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>ARTificial Intelligence: Machine Learning</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://bootswatch.com/4/sketchy/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/carousel.css" rel="stylesheet">
+
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+
+  </head>
+  <body>
+        <br> 
+        
+        <header>
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                  <a class="navbar-brand" href="/">ARTificial Intelligence</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
+                        <a class="nav-link" href="/artist_gallery">Artist's Gallery</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/test_gallery">Test Gallery</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/data">The Data</a>
+                      </li>
+                      <li class="nav-item active">
+                        <a class="nav-link" href="/about">About<span class="sr-only">(current)</span></a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </header>
+
+    <main role="main">
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+
+        <div class="row featurette">
+          <div class="col-md-12 order-md-1">
+            <h2 class="featurette-heading">Machine Learning Models</h2>
+            <p class="lead">
+              We've built Supervised Machine Learning Models to predict the time period in which a painting by a specific artist 
+              was created. For each of the artists, we have models based on the Decision Tree Classification Algorithm 
+              and a Random Forest Classifier. We used python's image processing libraries to generate metrics based on 
+              the available art images. These are metrics that indicate the complexity of an image, contours, 
+              luminance, contrast, mean_rgb colors, etc. You can view these in the <a href="../data">Data Tables</a>.
+              <br><br> The models use these metrics as the features
+              for training and prediction and determine the time period or style as it varies 
+              over a time period. These models were tweaked and saved to be used for classifying any of the artists' art 
+              into these predefined time periods/styles of the artists' work. To see more painting of the astists categorized by
+              the time periods/styles, visit the <a href="../artist_gallery">Artist's Gallery</a>.
+              <br><br>
+            </p>
+            <hr class="featurette-divider">
+          </div>
+          <div class="col-md-12 order-md-1">
+            <h3>Mark Rothko Decision Tree Model</h3><br><br>
+            <img class="featurette-image img-fluid mx-auto" src="../static/images/RothkoTree.png" alt="Generic placeholder image">
+          </div>
+          <div class="col-md-12 order-md-1">
+              <br><br><h3>Morris Louis Decision Tree Model</h3><br><br>
+              <img class="featurette-image img-fluid mx-auto" src="../static/images/MorrisTree.png" alt="Generic placeholder image">
+            </div>
+          </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-12 order-md-1">
+            <h3 class="featurette-heading">Mark Rothko Model Tests</h3>
+            <p class="lead">
+              <br>Here are some of Mark Rothko's paintings that we will use to test our Machine Learning models that we created for this artist. These images were not used to train the models.
+            </p>
+
+            <div class="row">
+
+              <div class="col-md-3 order-md-1">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Subway_1939.jpg"> Subway_1939.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/Subway_1939.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-2">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="No._21_ 1953.jpg"> No._21_ 1953.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/No._21_ 1953.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-3">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="1948_8.jpg"> 1948_8.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/1948_8.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-4">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="Untitled_1968.jpg"> Untitled_1968.jpg
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/rothko/Untitled_1968.jpg" alt="Generic placeholder image">
+                </label>
+              </div>
+            </div><!--div class="row"-->
+            <br>
+
+            <!--The form for the upload feature-->
+            <form method=post enctype=multipart/form-data>
+
+              <input type=file name=rothkofile>
+              <input class="btn btn-primary" type=submit value=Upload> 
+
+              {% if artist=='rothko'%}
+              <span id="rothkoFile" data="{{filename}}">{{filename}}{{msg}}</span> 
+              {% else %}
+              <span id="rothkoFile" data="">  </span>
+              {% endif %}
+
+            </form>
+            <br>
+
+            <div class="row">
+              <button class="btn btn-primary" onclick="predictRothko()">Classify</button>&nbsp;&nbsp;
+              &nbsp;&nbsp;<button class="btn btn-primary" onclick="clearRothkoUpload()">Clear</button>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h5 class="panel-title">Classification Result:</h5>
+                </div>
+                <div class="panel-body" id="result-panel">
+                  Select/upload an image and click the Classify button to see how the models classifies it.
+                </div>
+              </div>
+            </div>
+          </div><!--div class="col-md-12 order-md-1"-->
+        </div> <!--div class="row featurette"-->
+
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-12 order-md-1">
+            <h3 class="featurette-heading">Morris Louis Model Tests</h3>
+            <p class="lead">
+              <br>Here are some of Morris Louis' paintings that we will use to test our Machine Learning models that we created for this artist. These images were not used to train the models.
+            </p>
+
+            <div class="row">
+
+              <div class="col-md-3 order-md-1">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris1" value="du25.jpg"> du25.jpg (early_paintings_34_53)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du25.jpg" alt="du25.jpg">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-2">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris2" value="du223.jpg"> du223.jpg (themes_variations_59_60)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du223.jpg" alt="du223.jpg">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-3">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris3" value="du58.jpg"> du58.jpg (veil_paintings_54)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du58.jpg" alt="du58.jpg">
+                </label>
+              </div>
+
+              <div class="col-md-3 order-md-4">
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioMorrisOptions" id="inlineRadioMorris4" value="du331.jpg"> du331.jpg (unfurled_paintings_60_61)
+                  <img class="featurette-image img-fluid mx-auto" src="../static/images/test/morris/du331.jpg" alt="du331.jpg">
+                </label>
+              </div>
+            </div><!--div class="row"-->
+            <br>
+
+            <!--The form for the upload feature-->
+            <form method=post enctype=multipart/form-data>
+              <input type=file name=louisfile>
+              <input class="btn btn-primary" type=submit value=Upload> 
+              {% if artist=='louis'%}
+              <span id="louisFile" data="{{filename}}"> {{filename}}{{msg}} </span>
+              {% else %}
+              <span id="louisFile" data="">  </span>
+              {% endif %}
+            </form>
+            <br>
+
+            <div class="row">
+              <button class="btn btn-primary" onclick="predictMorris()">Classify</button>&nbsp;&nbsp;
+              &nbsp;&nbsp;<button class="btn btn-primary" onclick="clearLouisUpload()">Clear</button>
+            </div>
+            <br>
+
+            <div class="row">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h5 class="panel-title">Classification Result:</h5>
+                </div>
+                <div class="panel-body" id="result-panel-morris">
+                  Select/upload an image and click the Classify button to see how the models classifies it.
+                </div>
+              </div>
+            </div>
+            <hr class="featurette-divider">
+          </div>
+        </div>
+      </div><!-- /.container -->
+
+
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2018 Luke Pharr, Rupali Mayekar, Andrea Karaffa, David Richter, Jen Vacanti</p>
+      </footer>
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- Our javascript for predicting -->
+    <script src="../static/js/predict.js"></script>
+
+
+  </body>
+</html>

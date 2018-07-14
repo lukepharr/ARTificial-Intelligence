@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>ARTificial Intelligence: Machine Learning</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://bootswatch.com/4/sketchy/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+
+      <header>
+          <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="/">ARTificial Intelligence</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="/artist_gallery">Artist's Gallery</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/test_gallery">Test Gallery</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/data">The Data</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/about">About<span class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+
+    <main role="main">
+      <br>
+
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+
+          <div class="row featurette">
+            <div class="col-md-12 order-md-1">
+              <h2 class="featurette-heading">About: ARTificial Intelligence</h2>
+              <p class="lead">Explore each section of the site:
+                <ul>
+                  <li><a href="/test_gallery">Test Gallery</a>: Test the application on selected paintings.</li>
+                  <li><a href="/artist_gallery">Artist's Gallery</a>: Review a sampling of each artist's works from each key time period.</li>
+                  <li><a href="/data">Data</a>: Review the data used to build the models.</li>
+                  
+                </ul>
+                </p>
+            </div>
+
+          </div>
+
+          <hr class="featurette-divider">
+
+
+        <!-- START THE FEATURETTES -->
+
+
+
+          <div class="row featurette">
+            <div class="col-md-8 order-md-2">
+
+              <h2 class="featurette-heading">Project Background</h2>
+              <p class="lead">Inspired by the paintings of Marko Rothko and Morris Louis, the goal of this application is to identify the time period of each artist's paintings using machine learning techniques.
+                The initial intention was to use a neural network to predict the year painted for each painter's works, but this was not the best model due to a need for a larger dataset.
+                We explored various models like Linear Regression, clustering models like K Means, and classification models like Decision Tree and Random Forest. 
+                We found that predicting a year timeframe using the Decision Tree Model yielded the best results. 
+                <h3>How does the Application Work?</h3>
+                The website is powered by a Python Flask Application. Machine learning models were explored in Jupyter Notebook using Python's scikit-learn library to extract specific metrics 
+                from each artist's paintings and then test the correlation of these metrics with the year of the painting. These models were saved and reused by the Test Gallery via FLask. The 
+                Test Gallery has images from different time periods of each artist's career. These are not a part of the dataset that
+                the models were trained on. On clicking the Classify button, the metrics for the selected image are calculated, corresponding models are loaded
+                and used to predict the time period for the selected image.
+                <br><br>Tools used are: 
+                <ul>
+                  <li>Python Flask App</li>
+                  <li>Python SciKit Library: some of the API's utilized were skikit-image, sklearn.linear_model, sklearn.model_selection, sklearn.decomposition, sklearn.ensemble
+                  </li>
+                  <li>HTML, CSS, Bootstrap</li>
+                  <li>Javascript, D3</li>
+                </ul>
+              </p>
+            </div>
+            <!-- <div class="col-md-5 order-md-1">
+              <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+            </div> -->
+          </div>
+
+        <hr class="featurette-divider">
+
+          <div class="row featurette">
+          <div class="col-md-8 order-md-2">
+            <h2 class="featurette-heading">Process</h2>
+            <p class="lead">
+              <h4>Gathering the Images</h4>
+              The digital images for each artist's paintings were collected through online searches. 
+              While web scraping was used for all of the Morris Louis image collection, the Mark Rothko images were 
+              gathered manually. In total, 166 Rothko paintings and 660 Louis paintings were collected to build the prediction models.<br><br>
+              <h4>Extracting the Metrics</h4>
+              Every image is made of many pixels. Instead of running a prediction using the individual pixels from each image, 
+              image properties summarizing different pixel patterns and characteristics were
+              extracted from each image providing a more efficient dataset to build 
+              the prediction model.<br><br>
+              The image properties (metrics) below were extracted from each painting and can be found
+              in the <a href="/data">Data Tables</a>
+              
+              <ul>
+                <li>Contour: Extracting the contour is essentially extracting the general 
+                  shape of the pixel pattern. A pattern can be identified when boundary pixels show an ordered sequence.
+                </li>
+                <li>Contrast: This property describes the difference in color and brightness
+                  within the digital image.
+                </li>
+                <li>Mean Color: Each pixel is measured for a red, green and blue value. From there, each red, green and blue
+                  value is averaged to achieve an overall average value for the painting.
+                </li>
+                <li>Mean Color-Red: The red mean color value for each painting was used to correlate time period predictions 
+                  because the red colors appears to change the most over time with Rothko and Morris' paintings.
+                </li>
+                <li>Luminance: This shows the brightness of color and is calculated by using the 
+                  averaged red, green and blue values to calculate a luminance value: =(0.2126*R + 0.7152*G + 0.0722*B).
+                  This shows the difference in how the human eye perceives red, green and blue colors. For instance, green 
+                  light is most intensively perceived by the human eye.
+                </li>
+                <li>Shannon Entropy: This measures the business of an image. Greater entropy means a more complex image resulting in a 
+                  larger flattened file.
+                </li>
+              </ul>
+              <!-- <h4>Exploring the Relationships</h4> -->
+              <h4>Model Testing and Selections</h4>
+              Three different types of models were evaluated to build the Rothko and Morris prediction models.   <br><br>      
+              
+                <h5>Regression</h5>Linear regression was the first model evaluated as this is the most straightforward type of model with one independent variable - year and 
+                one or more dependent variables - the above metrics. The metrics were checked individually and together for a linear relationship, with highest correlation
+                  resulting from shannon entropy. Multilinear relationships were also explored using multiple metrics but proved not much more successful than using 
+                  shannon entropy individually. Scores for the regression models were at 0.5 or less. <br><br>
+                  
+                
+                <h5>Clustering K-Means</h5>
+                K-means models seek to cluster data into "k" number of groups that are each well represented by their means. It is successfully use when datasets are 
+                distinct and separated in a linear way. K-means models should result in visible clusters grouping the data points together, but when applied to the paintings, the resulting 
+                clusters overlapped significantly with indistinct boundaries. This was not surprising because the linear regression did not prove a strong correlation. <br><br>
+                
+                <h5>Classification: Decision Tree and Random Forest</h5> Decision trees are used to classify datasets visually, going through a series of decisions
+                based on a selected set of features until each branch is no longer split to achieve the final classification decision. The features in this case are: Shannon entropy, mean red color, luminance, contrast
+                and contour, and the final decision is which year bin to classify the painting. This model proved the best for both painter's but especially Rothko.  <br><br>
+                Model Scores:
+                <ul>
+                  <li>Rothko Decision Tree: 80%</li>
+                  <li>Rothko Random Forest: 83%</li> 
+                  <li>Louis Decision Tree: 60%. </li>
+                  <li>Louis Random Forest: 59% </li>
+                </ul>
+                Links to the code can be found here. 
+                <ul>
+                  <li><a href="https://github.com/cammster/ARTificial-Intelligence/tree/master/Rothko/models">Rothko Models</a> 
+                  </li>
+                  <li><a href="https://github.com/cammster/ARTificial-Intelligence/tree/master/Morris_Louis/models">Louis Models</a></li>
+                </ul>
+                  
+               
+              
+            
+            </p>
+          </div>
+          </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-8 order-md-2">
+            <h2 class="featurette-heading">Conclusions</h2>
+            Classification models scored the highest for Rothko and Morris time period predictions and both the 
+            Decision Tree and Random Forest were more or less similar in performance. The works of Mark Rothko and 
+            Morris Louis visibly change over time and now this is quantified and predictable using machine learning models. 
+            The Rothko paintings below show the change in his style over time. 
+            <p class="lead"></p>
+          </div>
+        </div>
+        
+          <div class="row">
+            <div class="col-md-4">
+              <img class="rounded-circle"  src="../static/images/Rothko_examples/Figurative(1936-1939)/Interior_1936.JPG"alt="Rothko" width="200" height="200">
+              <h6>Interior, 1936</h6>
+            </div>
+            <div class="col-md-4">
+              <img class="rounded-circle"  src="../static/images/Rothko_examples/Multiform(1947-1949)/Untitled_1948.JPG"alt="Rothko" width="200" height="200">
+              <h6>Untitled, 1948</h6>
+            </div>
+            <div class="col-md-4">
+              <img class="rounded-circle"  src="../static/images/Rothko_examples/Late(1968-1970)/Untitled_1969.JPG"alt="Rothko" width="200" height="200">
+              <h6>Untitled, 1969</h6>
+            </div>
+
+        </div>
+
+      <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+      </div><!-- /.container -->
+
+
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2018 Luke Pharr, Rupali Mayekar, Andrea Karaffa, David Richter, Jen Vacanti</p>
+      </footer>
+    </main>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"><\/script>')</script>
+    <!-- <script src="https://getbootstrap.com/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  </body>
+</html>
