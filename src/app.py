@@ -9,7 +9,8 @@ import pandas as pd
 from sklearn import tree
 import pickle
 
-import metrics
+# import metrics
+import new_metrics
 
 app = Flask(__name__)
 
@@ -36,21 +37,23 @@ def go_home():
 #########################################################
 @app.route('/classify_rothko/<imagefile>/<uploadfile>')
 def classify_rothko(imagefile=None, uploadfile=None):
-    d = {}
+    image_dict = {}
     # if the first parameter is "upload" then the uploadfile exists and we need to look
     # into the uploads folder, else the corresponding test folder. 
-    if (imagefile=="upload"):
-        print("uploads/"+uploadfile)
-        d = metrics.get_image_data("uploads/"+uploadfile)
+    if (imagefile == "upload"):
+        print("uploads/" + uploadfile)
+        # image_dict = metrics.get_image_data("uploads/" + uploadfile)
+        image_dict = new_metrics.open_and_get_metrics('uploads/' + uploadfile)
     else :
-        d = metrics.get_image_data("static/images/test/rothko/"+imagefile)
+        # image_dict = metrics.get_image_data("static/images/test/rothko/" + imagefile)
+        image_dict = new_metrics.open_and_get_metrics('static/images/test/rothko/' + imagefile)
     
 
     # load the rothko decision tree model from disk
     decision_tree_model = pickle.load(open(rothko_tree_model_file, "rb"))
 
     # get the metrics for the image that we need for the input features for the model
-    features = [[d["shannon_entropy"][0], d["mean_color_r"][0], d["luminance"][0], d["contrast"][0], d["contour"][0] ]]
+    features = [[image_dict["shannon_entropy"], image_dict["mean_color_r"], image_dict["luminance"], image_dict["contrast"], image_dict["contour"]]]
 
     # use the model to predict the year bin
     tree_predicted = decision_tree_model.predict(features)
@@ -73,7 +76,7 @@ def classify_rothko(imagefile=None, uploadfile=None):
     linear_bins = linear_pred_df['predicted_year_bin'].tolist()
 
     # create the dictionary to return
-    image_info = {"image_data": d, "tree_predicted_year_bin":tree_predicted.tolist(), 
+    image_info = {"image_data": image_dict, "tree_predicted_year_bin":tree_predicted.tolist(), 
                     "random_forest_predicted_year_bin":random_predicted.tolist(),
                     "linear_predicted_year_bins": linear_bins}
     return jsonify(image_info)
@@ -147,6 +150,15 @@ def show_test_gallery():
 
             # read the filename
             filename = file.filename
+            
+            #########################################################################
+            # Read in the image and convert it to an np.array without saving the file
+            img_file = file.stream.read()
+            img_data = np.frombuffer(img_file, np.uint8)
+            img = cv2.imdecode(img_data, cv2.IMREAD_COLOR)
+            # TODO:
+                # Pass img array to classify function. (Might need to be rewritten.)
+            #########################################################################
 
             # Save the file to the uploads folder
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))

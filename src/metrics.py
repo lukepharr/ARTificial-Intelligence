@@ -20,14 +20,14 @@ from skimage.exposure import is_low_contrast
 
 def mode_color(img):
     #read in image
-    img=io.imread(img)
+    img = io.imread(img)
     #flatten image
-    flat_img=[]
+    flat_img = []
     for x in img:
         for y in x:
             flat_img.append(y)
     #convert pixels to strings
-    flat_img=[str(x) for x in flat_img]
+    flat_img = [str(x) for x in flat_img]
     #create dictionary with pixel color counts
     counts = {}
     for i in flat_img:
@@ -37,16 +37,16 @@ def mode_color(img):
             counts[i] = 1
     #find maximum value and convert to numpy array
     key_max = max(counts.keys(), key=(lambda k: counts[k]))
-    key_max=key_max.split('[')[1].split(']')[0]
-    rgb=np.fromstring(key_max, dtype=int, sep=' ')
-    rgb=[rgb[0],rgb[1],rgb[2]]
+    key_max = key_max.split('[')[1].split(']')[0]
+    rgb = np.fromstring(key_max, dtype=int, sep=' ')
+    rgb = [rgb[0],rgb[1],rgb[2]]
     return rgb
 
 def mean_color(img):
     #read in image
-    img=io.imread(img)
+    img = io.imread(img)
     #flatten image
-    flat_img=[]
+    flat_img = []
     for x in img:
         for y in x:
             flat_img.append(y)
@@ -55,7 +55,7 @@ def mean_color(img):
     g = np.array([x[1] for x in flat_img]).mean()
     b = np.array([x[2] for x in flat_img]).mean()
     #combine into one array
-    rgb=[r,g,b]
+    rgb = [r, g, b]
     return rgb
 
 def shannon_entropy(img):
@@ -86,8 +86,8 @@ def get_shape_index(img):
     return avg_squares_shape_index
 
 def low_contrast(img):
-    img=io.imread(img)
-    lowcontrast=is_low_contrast(img)
+    img = io.imread(img)
+    lowcontrast = is_low_contrast(img)
     return lowcontrast
 
 def getImageContrast(img_file_path):
