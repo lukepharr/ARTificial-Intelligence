@@ -93,9 +93,9 @@ def classify_morris(imagefile=None, uploadfile=None):
     # into the uploads folder, else the corresponding test folder. 
     if (imagefile == "upload"):
         print("uploads/" + uploadfile)
-        image_dict = metrics.get_image_data("uploads/"+uploadfile)
+        image_dict = new_metrics.open_and_get_metrics("uploads/"+uploadfile)
     else :
-        image_dict = metrics.get_image_data("static/images/test/morris/" + imagefile)
+        image_dict = new_metrics.open_and_get_metrics("static/images/test/morris/" + imagefile)
     
     # get the metrics for the image that we need for the input features for the model
     features = [[image_dict["shannon_entropy"], image_dict["mean_color_r"], image_dict["luminance"], image_dict["contrast"], image_dict["contour"]]]

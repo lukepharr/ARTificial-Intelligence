@@ -23,11 +23,6 @@ def open_and_get_metrics(img_path):
     img = io.imread(img_path)
     flat_image = flatten(img)
 
-    # Treats the image as a matrix - replace with dot product
-    for col in img:
-        for row in col:
-            flat_image.append(row)
-
     entropy = shannon_entropy(img, base=2)
     mean_colors = get_mean_colors(flat_image)
     luminance = (0.2126 * mean_colors[0] + 0.7152 * mean_colors[1] + 0.0722 * mean_colors[2])
