@@ -93,9 +93,11 @@ def low_contrast(img):
 def getImageContrast(img_file_path):
     img = io.imread(img_file_path)
     flat_img = []
+
     for x in img:
         for y in x:
             flat_img.append(y)
+
     lum = []
     for rgb in flat_img:
         luminance = (0.2126*rgb[0] + 0.7152*rgb[1] + 0.0722*rgb[2])
@@ -129,6 +131,3 @@ def get_image_data(filename):
     data_['contrast'].append(getImageContrast(filename))
 
     return data_
-
-
-

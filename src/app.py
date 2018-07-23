@@ -72,12 +72,12 @@ def classify_rothko(imagefile=None, uploadfile=None):
     linear_predictions = linear_predictions.round().astype(int)
     linear_pred_df = pd.DataFrame(data = {"predicted": linear_predictions})
     bins = [1935, 1940, 1947, 1950, 1968, 1971]
-    linear_pred_df['predicted_year_bin']=pd.cut(linear_pred_df['predicted'], bins).astype(str)
+    linear_pred_df['predicted_year_bin'] = pd.cut(linear_pred_df['predicted'], bins).astype(str)
     linear_bins = linear_pred_df['predicted_year_bin'].tolist()
 
     # create the dictionary to return
-    image_info = {"image_data": image_dict, "tree_predicted_year_bin":tree_predicted.tolist(), 
-                    "random_forest_predicted_year_bin":random_predicted.tolist(),
+    image_info = {"image_data": image_dict, "tree_predicted_year_bin": tree_predicted.tolist(), 
+                    "random_forest_predicted_year_bin": random_predicted.tolist(),
                     "linear_predicted_year_bins": linear_bins}
     return jsonify(image_info)
 
@@ -88,17 +88,17 @@ def classify_rothko(imagefile=None, uploadfile=None):
 #########################################################
 @app.route('/classify_morris/<imagefile>/<uploadfile>')
 def classify_morris(imagefile=None, uploadfile=None):
-
+    image_dict = {}
     # if the first parameter is "upload" then the uploadfile exists and we need to look
     # into the uploads folder, else the corresponding test folder. 
-    if (imagefile=="upload"):
-        print("uploads/"+uploadfile)
-        d = metrics.get_image_data("uploads/"+uploadfile)
+    if (imagefile == "upload"):
+        print("uploads/" + uploadfile)
+        image_dict = metrics.get_image_data("uploads/"+uploadfile)
     else :
-        d = metrics.get_image_data("static/images/test/morris/"+imagefile)
+        image_dict = metrics.get_image_data("static/images/test/morris/" + imagefile)
     
     # get the metrics for the image that we need for the input features for the model
-    features = [[d["shannon_entropy"][0], d["mean_color_r"][0], d["luminance"][0], d["contrast"][0], d["contour"][0] ]]
+    features = [[image_dict["shannon_entropy"], image_dict["mean_color_r"], image_dict["luminance"], image_dict["contrast"], image_dict["contour"]]]
 
     # load the morris decision tree model from disk
     decision_tree_model = pickle.load(open(morris_tree_model_file, "rb"))

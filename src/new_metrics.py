@@ -6,7 +6,7 @@ from skimage import io
 from skimage import feature
 from skimage.util import invert
 from skimage.measure import perimeter, find_contours, shannon_entropy
-from skimage.measure._regionprops import (regionprops as regionprops_default, perimeter)
+from skimage.measure._regionprops import perimeter
 from skimage.exposure import is_low_contrast
 from skimage.color import rgb2gray
 
