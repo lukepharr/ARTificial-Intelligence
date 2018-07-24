@@ -153,9 +153,9 @@ def show_test_gallery():
             
             #########################################################################
             # Read in the image and convert it to an np.array without saving the file
-            img_file = file.stream.read()
-            img_data = np.frombuffer(img_file, np.uint8)
-            img = cv2.imdecode(img_data, cv2.IMREAD_COLOR)
+            # img_file = file.stream.read()
+            # img_data = np.frombuffer(img_file, np.uint8)
+            # img = cv2.imdecode(img_data, cv2.IMREAD_COLOR)
             # TODO:
                 # Pass img array to classify function. (Might need to be rewritten.)
             #########################################################################
