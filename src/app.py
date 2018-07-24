@@ -114,7 +114,7 @@ def classify_morris(imagefile=None, uploadfile=None):
 
 
     # create the dictionary to return
-    image_info = {"image_data": d, "tree_predicted_year_bin":tree_predicted.tolist(), 
+    image_info = {"image_data": image_dict, "tree_predicted_year_bin":tree_predicted.tolist(), 
                     "random_forest_predicted_year_bin":random_predicted.tolist()}
     print("############  Morris Louis Response ###############")
     print(image_info)
