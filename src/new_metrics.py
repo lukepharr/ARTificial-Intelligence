@@ -37,10 +37,10 @@ def open_and_get_metrics(img_path):
         image_data: A dictionary of all the collected image metrics
     """
     img = io.imread(img_path)
-    flat_image = flatten(img)
+    flat_img = flatten(img)
 
     entropy = shannon_entropy(img, base=2)
-    mean_colors = get_mean_colors(flat_image)
+    mean_colors = get_mean_colors(flat_img)
     luminance = (0.2126 * mean_colors[0] + 0.7152 * mean_colors[1] + 0.0722 * mean_colors[2])
     contrast = get_contrast(luminance)
     contour = get_contour(img)
