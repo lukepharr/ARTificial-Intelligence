@@ -40,9 +40,9 @@ def open_and_get_metrics(img_path):
     flat_img = flatten(img)
 
     entropy = shannon_entropy(img, base=2)
-    mean_colors = get_mean_colors(flat_img)
-    luminance = (0.2126 * mean_colors[0] + 0.7152 * mean_colors[1] + 0.0722 * mean_colors[2])
-    contrast = get_contrast(luminance)
+    mean_colors = get_mean_colors(flat_img) 
+    luminance = (0.2126 * mean_colors[0]) + (0.7152 * mean_colors[1]) + (0.0722 * mean_colors[2])
+    contrast = get_contrast(flat_img)
     contour = get_contour(img)
 
     image_data = {
@@ -54,6 +54,8 @@ def open_and_get_metrics(img_path):
         'contrast': contrast,
         'contour': contour
     }
+
+    print(image_data)
 
     return image_data
 
@@ -118,7 +120,7 @@ def get_mean_colors(flat_img):
     return mean_colors
 
 # Extract contrast from luminance
-def get_contrast(luminance):
+def get_contrast(flat_img):
     """Gets the contrast value from the min and max luminance values.
 
     Args:
@@ -127,8 +129,16 @@ def get_contrast(luminance):
     Returns:
         contrast: Contrast value from the formula for finding contrast from luminance.
     """
+
+    luminance = []
+
+    for pixel in flat_img:
+        lum_val = (0.2126 * pixel[0] + 0.7152 * pixel[1] + 0.0722 * pixel[2])
+        luminance.append(lum_val)  
+    
     lmin = np.min(luminance)
     lmax = np.max(luminance)
+    
     contrast = (lmax - lmin) / (lmax + lmin)
 
     return contrast
