@@ -124,7 +124,7 @@ def get_contrast(flat_img):
     """Gets the contrast value from the min and max luminance values.
 
     Args:
-        luminance: Calculated using the standard luminance formula in open_and_get_metrics().
+        flat_img: 1-dimensional array from flatten()
     
     Returns:
         contrast: Contrast value from the formula for finding contrast from luminance.
